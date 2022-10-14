@@ -8,16 +8,17 @@ from .forms import Myform
 def index(request):
     users = get_user_model().objects.all()
     context = {
-        'users': users,
+        "users": users,
     }
-    return render(request, 'accounts/index.html', context)
+    return render(request, "accounts/index.html", context)
+
 
 def signup(request):
     if request.method == "POST":
         form = Myform(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('accounts:index')
+            return redirect("accounts:index")
     else:
         form = Myform()
     context = {
@@ -31,10 +32,20 @@ def login(request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             mylogin(request, form.get_user())
-            return redirect('accounts:index')
+            return redirect("accounts:index")
     else:
         form = AuthenticationForm()
     context = {
-        'form': form,
+        "form": form,
     }
-    return render(request, 'accounts/login.html', context)
+    return render(request, "accounts/login.html", context)
+
+
+def detail(request, pk):
+    user = get_user_model().objects.get(pk=pk)
+
+    context = {
+        "user": user,
+    }
+
+    return render(request, "accounts/detail.html", context)
