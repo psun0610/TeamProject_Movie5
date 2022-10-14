@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import login as mylogin
 from django.contrib.auth import logout as mylogout
 from django.contrib.auth import get_user_model
@@ -72,4 +73,31 @@ def update(request):
 @login_required
 def logout(request):
     mylogout(request)
+    return redirect("accounts:index")
+
+
+@login_required
+def change_password(request):
+    if request.method == "POST":
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            return redirect("main")
+    else:
+        form = PasswordChangeForm(request.user)
+    context = {
+        "form": form,
+    }
+    return render(request, "accounts/change_password.html", context)
+
+
+@login_required
+def delete(request, pk):
+    User = get_user_model()
+    user = User.objects.get(id=pk)
+    if request.method == "POST":
+        user.delete()
+        mylogout(request)
+
     return redirect("accounts:index")
