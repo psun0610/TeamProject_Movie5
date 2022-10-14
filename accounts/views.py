@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as mylogin
 from django.contrib.auth import get_user_model
-from .forms import Myform
+from .forms import Myform, MyChangeform
 
 # Create your views here.
 def index(request):
@@ -49,3 +49,17 @@ def detail(request, pk):
     }
 
     return render(request, "accounts/detail.html", context)
+
+
+def update(request):
+    if request.method == "POST":
+        form = MyChangeform(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect("accounts:detail", request.user.pk)
+    else:
+        form = MyChangeform(instance=request.user)
+    context = {
+        'form': form,
+    }
+    return render(request, "accounts/update.html", context)

@@ -4,5 +4,5 @@
 <h1>{{ user.id }}</h1>
 <h1>{{ user.username }}</h1>
 <h1>{{ user.email }}</h1>
-
+<a href="{% url 'accounts:update' %}">수정</a> <!--옮길 것-->
 {% endblock %}
