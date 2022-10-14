@@ -4,21 +4,28 @@
 {% block content %}
 <h1 class="mt-5 text-center reviews-title">Review Community</h1>
 <div class="row">
-  {% for review in reviews %}
-  <div>
-    
+  <div class="row mt-5 col-8">
+    {% for review in reviews %}
+    <a href="{% url 'reviews:detail' review.pk %}" class="col-4 reviews-box">
+      <div class="text-center d-flex flex-column justify-content-center">
+        <h1 class="card-movie-name">{{ review.movie_name }}</h1>
+        <h2 class="card-titles">{{ review.title }}</h2>
+      </div>
+    </a>
+    {% endfor %}
   </div>
-  {% endfor %}
+  <aside class="reviews-aside col-3">
+    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-person-circle user-icon" viewBox="0 0 16 16">
+      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+    </svg>
+    {{ request.user.username }}
+    {{ request.user.email }}
+    <a href="{% url 'accounts:update' %}">수정</a>
+    <a href="{% url 'accounts:' %}">회원 탈퇴</a>
+  </aside>
 </div>
 
 
 
-
-
-  {% for review in reviews %}
-    <a href="{% url 'reviews:detail' review.pk %}">{{ review.title }}</a>
-    <p>{{ review.created_at }}
-      |
-      {{ review.updated_at}}</p>
-  {% endfor %}
 {% endblock %}
