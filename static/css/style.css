@@ -8,9 +8,8 @@ body {
   /* background-color: aliceblue; */
 }
 a {
-  color: rgb(26, 28, 48);
+  color:rgb(26, 28, 48);
   text-decoration: none;
-  
 }
 
 a:hover {
@@ -26,7 +25,7 @@ a:hover {
 .reviews-box>div {
   background-color: rgb(228, 225, 246);
   width: 100%;
-  height: 15rem;
+  height: 10rem;
   padding: 1.5rem;
   margin-bottom: 2rem;
   border-radius: 2rem;
@@ -34,7 +33,7 @@ a:hover {
 }
 
 .card-movie-name {
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 .card-titles {
@@ -46,5 +45,12 @@ a:hover {
 }
 
 .user-icon {
-  color:rgb(202, 202, 202);
+  color:rgb(228, 225, 246);
+}
+
+.user-name {
+  margin-left: 0.8rem;
+  margin-bottom: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
