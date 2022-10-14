@@ -14,8 +14,8 @@
     {% for user in users %}
     <tr>
       <td>
-        <a href="{% url 'accounts:detail' request.user.pk %}" style="color: rgb(228, 225, 246);">{{ user.pk }}</a>
-      </td>
+        <a href="{% url 'accounts:detail' user.pk %}" style="color: rgb(228, 225, 246);">{{ user.pk }}</a>
+        </td>
       <td>{{ user.username }}</td>
       <td>{{ user.email }}</td>
     </tr>
