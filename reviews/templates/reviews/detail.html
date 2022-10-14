@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ reviews.pk }}번 게시글</h1>
+  <h3>{{ reviews.title }}</h3>
+  <p>{{ reviews.created_at }}
+    |
+    {{ reviews.updated_at }}</p>
+  <p>{{ reviews.content }}</p>
+{% endblock content %}

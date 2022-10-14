@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import ReviewForm
+from .models import Review
 
 # Create your views here.
 def create(request):
@@ -13,8 +14,21 @@ def create(request):
     context = {
         'review_form': review_form,
     }
+
     return render(request, 'reviews/create.html', context)
 
 
 def index(request):
-    return render(request, 'reviews/index.html')
+    reviews = Review.objects.order_by('-pk')
+    context = {
+        'reviews':reviews,
+    }
+    return render(request, 'reviews/index.html', context)
+
+def detail(request, review_pk):
+    review = Review.objects.get(review_pk=review_pk)
+    
+    context = {
+        'review':review,
+    }
+    return render(request, 'reviews/detail.html', context)
