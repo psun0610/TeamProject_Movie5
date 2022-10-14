@@ -61,10 +61,11 @@ def update(request):
     else:
         form = MyChangeform(instance=request.user)
     context = {
-        'form': form,
+        "form": form,
     }
     return render(request, "accounts/update.html", context)
 
+
 def logout(request):
     mylogout(request)
-    return redirect('accounts:index')
+    return redirect("accounts:index")
