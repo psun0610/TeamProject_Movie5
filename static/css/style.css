@@ -12,6 +12,10 @@ a {
   text-decoration: none;
 }
 
+.text-color {
+  color: rgb(228, 225, 246);
+}
+
 a:hover {
   color:rgb(0, 0, 0);
 }
@@ -48,9 +52,36 @@ a:hover {
   color:rgb(228, 225, 246);
 }
 
-.user-name {
-  margin-left: 0.8rem;
-  margin-bottom: 0;
-  font-size: 1.2rem;
-  font-weight: bold;
+.reviews-user {
+  padding: 1rem;
+  border: 4px solid rgb(228, 225, 246);
+  border-radius: 2rem;
+}
+
+.detail-card {
+  background: linear-gradient(to bottom right,rgb(185, 187, 216),rgb(141, 143, 185));
+  color: rgb(39 31 80);
+  padding: 2rem;
+  margin: 2rem 0;
+  border-radius: 2rem;
+  box-shadow: 0 0 1.5rem 0.1rem  rgb(206, 198, 220);
+}
+.detail-box {
+  background: linear-gradient(to bottom right,rgb(36, 28, 80),rgb(33, 28, 78));
+  color: rgb(39 31 80);
+  padding: 1.5rem;
+  margin: 3rem 0;
+  border-radius: 2rem;
+  box-shadow: 0 0 1.5rem 0.1rem  rgb(155, 151, 184);
+}
+
+
+.detail-myhits {
+  background-color: rgb(127, 129, 199);
+  color: rgb(252, 252, 252);
+  padding: 0.02rem 0.4rem 0.15rem;
+  border-radius: 2rem;
+  display: inline-block;
+  box-shadow: 0 0 0.5rem 0.05rem rgb(193, 187, 219);
+  font-size: 15px;
 }
