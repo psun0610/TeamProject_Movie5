@@ -2,7 +2,19 @@
 {% load django_bootstrap5 %}
 
 {% block content %}
-  <a href="{% url 'reviews:create' %}">글쓰기</a>
+<h1 class="mt-5 text-center reviews-title">Review Community</h1>
+<div class="row">
+  {% for review in reviews %}
+  <div>
+    
+  </div>
+  {% endfor %}
+</div>
+
+
+
+
+
   {% for review in reviews %}
     <a href="{% url 'reviews:detail' review.pk %}">{{ review.title }}</a>
     <p>{{ review.created_at }}
