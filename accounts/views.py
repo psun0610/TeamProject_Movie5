@@ -3,6 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as mylogin
 from django.contrib.auth import logout as mylogout
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from .forms import Myform, MyChangeform
 
 # Create your views here.
@@ -33,7 +34,7 @@ def login(request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             mylogin(request, form.get_user())
-            return redirect("accounts:index")
+            return redirect(request.GET.get("next") or "reviews:index")
     else:
         form = AuthenticationForm()
     context = {
@@ -42,6 +43,7 @@ def login(request):
     return render(request, "accounts/login.html", context)
 
 
+@login_required
 def detail(request, pk):
     user = get_user_model().objects.get(pk=pk)
 
@@ -52,6 +54,7 @@ def detail(request, pk):
     return render(request, "accounts/detail.html", context)
 
 
+@login_required
 def update(request):
     if request.method == "POST":
         form = MyChangeform(request.POST, instance=request.user)
@@ -66,6 +69,7 @@ def update(request):
     return render(request, "accounts/update.html", context)
 
 
+@login_required
 def logout(request):
     mylogout(request)
     return redirect("accounts:index")
