@@ -1,6 +1,6 @@
 from dataclasses import fields
 from pyexpat import model
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import get_user_model
 
 
@@ -9,4 +9,13 @@ class Myform(UserCreationForm):
         model = get_user_model()
         fields = [
             "username",
+        ]
+
+class MyChangeform(UserChangeForm):
+    class Meta:
+        model = get_user_model()
+        fields = [
+            "first_name",
+            "last_name",
+            "email",
         ]
