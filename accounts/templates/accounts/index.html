@@ -2,7 +2,8 @@
 {% load django_bootstrap5 %}
 
 {% block content %}
-<a href="{% url 'accounts:login' %}">login</a>
+  <a href="{% url 'accounts:login' %}">login</a>
+  <a href="{% url 'accounts:logout' %}">logout</a>
   <table class="table">
     <thead>
       <tr>

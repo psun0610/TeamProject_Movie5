@@ -10,4 +10,5 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("<int:pk>", views.detail, name="detail"),
     path("update/", views.update, name="update"),
+    path('logout/', views.logout, name='logout'),
 ]

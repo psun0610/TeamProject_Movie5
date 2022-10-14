@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as mylogin
+from django.contrib.auth import logout as mylogout
 from django.contrib.auth import get_user_model
 from .forms import Myform, MyChangeform
 
@@ -63,3 +64,7 @@ def update(request):
         'form': form,
     }
     return render(request, "accounts/update.html", context)
+
+def logout(request):
+    mylogout(request)
+    return redirect('accounts:index')
